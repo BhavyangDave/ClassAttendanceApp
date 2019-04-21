@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position!=0 && registration){
+                    clearInput();
                     createRegistrationForm(position);
                 }
             }
@@ -77,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         createLoginForm();
     }
 
-
     protected void showRegistration() {
         findViewById(R.id.logo).setVisibility(VISIBLE);
         findViewById(R.id.spaceBetween).setVisibility(VISIBLE);
@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.en).setVisibility(VISIBLE);
             findViewById(R.id.sem).setVisibility(VISIBLE);
             findViewById(R.id.div).setVisibility(VISIBLE);
+            findViewById(R.id.branch).setVisibility(VISIBLE);
             findViewById(R.id.facId).setVisibility(GONE);
             chooseType.setSelection(1);
         }
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.en).setVisibility(GONE);
             findViewById(R.id.sem).setVisibility(GONE);
             findViewById(R.id.div).setVisibility(GONE);
+            findViewById(R.id.branch).setVisibility(VISIBLE);
         }else if(position == 3){
             name.setHint("Head of Department Name");
             id.setHint("Head of Department ID");
@@ -127,10 +129,12 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.en).setVisibility(GONE);
             findViewById(R.id.sem).setVisibility(GONE);
             findViewById(R.id.div).setVisibility(GONE);
+            findViewById(R.id.branch).setVisibility(VISIBLE);
         }
     }
 
     private void createLoginForm(){
+        clearInput();
         //LOGO visible
         findViewById(R.id.logo).setVisibility(VISIBLE);
 
@@ -173,5 +177,36 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.en).setVisibility(GONE);
         findViewById(R.id.registrationTitle).setVisibility(GONE);
         findViewById(R.id.loginLabel).setVisibility(GONE);
+        findViewById(R.id.branch).setVisibility(GONE);
+    }
+
+    private void clearInput(){
+
+        EditText password = (EditText)findViewById(R.id.password);
+        password.setText("");
+
+        EditText email = (EditText)findViewById(R.id.email);
+        email.setText("");
+
+        EditText name = (EditText)findViewById(R.id.name);
+        name.setText("");
+
+        EditText cpass = (EditText)findViewById(R.id.cpassword);
+        cpass.setText("");
+
+        Spinner sem = (Spinner)findViewById(R.id.sem);
+        sem.setSelection(0);
+
+        Spinner div = (Spinner)findViewById(R.id.div);
+        div.setSelection(0);
+
+        Spinner branch = (Spinner)findViewById(R.id.branch);
+        branch.setSelection(0);
+
+        EditText facId = (EditText)findViewById(R.id.facId);
+        facId.setText("");
+
+        EditText en = (EditText)findViewById(R.id.en);
+        en.setText("");
     }
 }

@@ -6,7 +6,7 @@
     android:background="@color/backgroundColor"
     android:orientation="horizontal"
     android:weightSum="10"
-    android:padding="30dp">
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -22,15 +22,13 @@
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/appLogo"/>
 
-
-
         <TextView
             android:id="@+id/loginTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:textSize="25sp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:textAlignment="center"
             android:visibility="gone"
             />
@@ -41,11 +39,9 @@
             android:text="@string/register"
             android:textSize="25sp"
             android:textAlignment="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:visibility="gone"
             />
-
-
 
         <Spinner
             android:id="@+id/userType"
@@ -55,8 +51,6 @@
             android:spinnerMode="dropdown"
             android:entries="@array/userType"
             android:visibility="gone"/>
-
-
 
         <EditText
             android:id="@+id/en"
@@ -87,29 +81,39 @@
             android:inputType="textPersonName"
             android:visibility="gone"/>
 
-        <EditText
+        <Spinner
+            android:id="@+id/branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:entries="@array/branchList"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"/>
+
+        <Spinner
             android:id="@+id/sem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/semester"
-            android:inputType="number"
+            android:spinnerMode="dropdown"
+            android:entries="@array/semList"
+            android:layout_marginBottom="20dp"
             android:visibility="gone"/>
 
-        <EditText
+
+        <Spinner
             android:id="@+id/div"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/division"
-            android:inputType="textCapCharacters"
+            android:spinnerMode="dropdown"
+            android:entries="@array/divList"
+            android:layout_marginBottom="10dp"
             android:visibility="gone"/>
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -144,11 +148,22 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text=""
             android:visibility="gone"
             android:onClick="submit"/>
 
+        <TextView
+            android:id="@+id/userNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/userNotFound"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:textColor="@color/Red"
+            />
 
 
         <TextView
@@ -202,7 +217,5 @@
             />
 
     </LinearLayout>
-
-
 
 </LinearLayout>

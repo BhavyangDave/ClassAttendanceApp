@@ -9,6 +9,32 @@
         <item>Faculty</item>
         <item>Head of Department</item>
     </string-array>
+    <string-array name="semList">
+        <item>Select Semester</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="branchList">
+        <item>Select Branch</item>
+        <item>Mechanical</item>
+        <item>Computer</item>
+        <item>Automobile</item>
+        <item>Electrical</item>
+        <item>EC</item>
+        <item>Civil</item>
+        <item>Information Technology</item>
+    </string-array>
+    <string-array name="divList">
+        <item>Select Division</item>
+        <item>A</item>
+        <item>B</item>
+    </string-array>
 
     <string name="fullname">Full Name</string>
     <string name="enrollmentnumber">Enrollment Number</string>
@@ -24,4 +50,5 @@
     <string name="registerHere">Register Here</string>
     <string name="alreadyAMember">Already a Member?</string>
     <string name="dontHaveAnAccount">Dont have an Account?</string>
+    <string name="userNotFound">User Not Found!</string>
 </resources>

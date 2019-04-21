@@ -3,7 +3,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundColor">#FFFFFF</color>
-
+    <color name="Red">#FF0000</color>
     <color name="Type">#18D852</color>
     <color name="registration">#3335FF</color>
 </resources>
