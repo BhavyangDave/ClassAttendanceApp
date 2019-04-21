@@ -19,7 +19,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/logo3"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/appLogo"/>
 
 
 
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
             android:visibility="gone"
@@ -38,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textAlignment="center"
             android:layout_marginBottom="20dp"
             android:visibility="gone"
@@ -154,8 +155,8 @@
         android:id="@+id/registrationLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dont have an Account?"
-        android:textSize="20dp"
+        android:text="@string/dontHaveAnAccount"
+        android:textSize="15sp"
         android:layout_marginBottom="10dp"
         android:textAlignment="center"
         android:visibility="gone"
@@ -165,8 +166,8 @@
             android:id="@+id/loginLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Already a Member?"
-            android:textSize="20dp"
+            android:text="@string/alreadyAMember"
+            android:textSize="15sp"
             android:layout_marginBottom="10dp"
             android:textAlignment="center"
             android:visibility="gone"
@@ -176,26 +177,28 @@
             android:id="@+id/registrationLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register Here"
-            android:textSize="15dp"
+            android:text="@string/registerHere"
+            android:textSize="13sp"
             android:textAlignment="center"
             android:textColor="@color/registration"
             android:clickable="true"
             android:onClick="toRegistration"
             android:visibility="gone"
+            android:focusable="true"
             />
         <TextView
             android:id="@+id/loginLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login Here"
-            android:textSize="15dp"
+            android:text="@string/loginHere"
+            android:textSize="13sp"
             android:textAlignment="center"
             android:textColor="@color/registration"
             android:clickable="true"
             android:onClick="toLogin"
             android:layout_gravity="center_horizontal"
             android:visibility="gone"
+            android:focusable="true"
             />
 
     </LinearLayout>

@@ -19,4 +19,9 @@
     <string name="semester">Semester</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="appLogo">App Logo</string>
+    <string name="loginHere">Login Here</string>
+    <string name="registerHere">Register Here</string>
+    <string name="alreadyAMember">Already a Member?</string>
+    <string name="dontHaveAnAccount">Dont have an Account?</string>
 </resources>
