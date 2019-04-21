@@ -3,12 +3,13 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="spinnerTitle">Login Type</string>
-    <string-array name="loginType">
-        <item>Login Type</item>
+    <string-array name="userType">
+        <item>User Type</item>
         <item>Student</item>
         <item>Faculty</item>
         <item>Head of Department</item>
     </string-array>
+
     <string name="fullname">Full Name</string>
     <string name="enrollmentnumber">Enrollment Number</string>
     <string name="division">Division</string>
@@ -16,4 +17,6 @@
     <string name="fac_name">Faculty Name</string>
     <string name="cpassword">Confirm Password</string>
     <string name="semester">Semester</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>

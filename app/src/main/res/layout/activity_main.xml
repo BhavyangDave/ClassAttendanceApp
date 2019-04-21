@@ -2,79 +2,204 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:background="@color/backgroundColor"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:weightSum="10"
+    android:padding="30dp">
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/logo3"
-        android:layout_gravity="center_horizontal"
-        />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/loginType"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:spinnerMode="dropdown"
-        android:entries="@array/loginType"  />
+        <ImageButton
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo3"
+            android:layout_gravity="center_horizontal"/>
 
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="270dp"
 
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:textSize="20dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        <TextView
+            android:id="@+id/loginTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textSize="25dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/registrationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            />
 
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:breakStrategy="simple"
 
-        android:ems="10"
-        android:textSize="20dp"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        <Spinner
+            android:id="@+id/userType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:spinnerMode="dropdown"
+            android:entries="@array/userType"
+            android:visibility="gone"/>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Login" />
 
-    <TextView
+
+        <EditText
+            android:id="@+id/en"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/enrollmentnumber"
+            android:inputType="number"
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:id="@+id/facId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:hint="@string/fac_id"
+            android:inputType="text"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint=""
+            android:inputType="textPersonName"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/sem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/semester"
+            android:inputType="number"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/div"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/division"
+            android:inputType="textCapCharacters"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:visibility="gone"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+
+            android:hint="@string/password"
+            android:inputType="textPassword"
+
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/cpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/cpassword"
+            android:inputType="textPassword"
+            android:visibility="gone"/>
+
+        <Space
+            android:id="@+id/spaceBetween"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text=""
+            android:visibility="gone"
+            android:onClick="submit"/>
+
+
+
+        <TextView
         android:id="@+id/registrationLabel"
-        android:layout_width="270dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dont have an Account?"
         android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:textAlignment="center"
+        android:visibility="gone"
         />
 
-    <TextView
-        android:id="@+id/registrationLink"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:text="Register Here"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        android:textColor="@color/registration"
-        android:clickable="true"
-        android:onClick="toRegistration"
+        <TextView
+            android:id="@+id/loginLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Already a Member?"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            />
 
-        />
+        <TextView
+            android:id="@+id/registrationLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register Here"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:textColor="@color/registration"
+            android:clickable="true"
+            android:onClick="toRegistration"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/loginLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login Here"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:textColor="@color/registration"
+            android:clickable="true"
+            android:onClick="toLogin"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
