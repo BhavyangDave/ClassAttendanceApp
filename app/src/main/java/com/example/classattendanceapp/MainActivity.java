@@ -17,6 +17,7 @@ import com.example.classattendanceapp.javaclasses.Student;
 import com.example.classattendanceapp.javaclasses.User;
 
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner userType, branch, sem, div;
     EditText email, password, fname, en, facId;
-    TextView result = (TextView)findViewById(R.id.resultAlert);
+    TextView result;
     Button b;
     boolean registration = false;
     Student student;
@@ -38,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
         hideAll();
-
         b = (Button)findViewById(R.id.button);
         userType =(Spinner) findViewById(R.id.userType);
+        result = findViewById(R.id.resultAlert);
         userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                result.setVisibility(INVISIBLE);
                 if(position==0)
                     findViewById(R.id.button).setEnabled(false);
                 else
@@ -183,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.registrationTitle).setVisibility(GONE);
         findViewById(R.id.loginLabel).setVisibility(GONE);
         findViewById(R.id.branch).setVisibility(GONE);
+        findViewById(R.id.resultAlert).setVisibility(INVISIBLE);
     }
 
     private void clearInput(){
@@ -228,44 +230,39 @@ public class MainActivity extends AppCompatActivity {
             branch = (Spinner)findViewById(R.id.branch);
 
             String branchString = returnBranch(branch.getSelectedItemPosition());
-            String divString = returnDiv(div.getSelectedItemPosition());
+
             if(userTypeInt == 1){
                 en = (EditText)findViewById(R.id.en);
                 sem = (Spinner)findViewById(R.id.sem);
                 div = (Spinner)findViewById(R.id.div);
+                String divString = returnDiv(div.getSelectedItemPosition());
                 student = new Student(Long.parseLong(en.getText().toString()), fname.getText().toString(), branchString, sem.getSelectedItemPosition(), divString, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(student, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(student, registration, MainActivity.this);
             }
-            else if(userTypeInt == 2){
-                facId = (EditText)findViewById(R.id.facId);
+            else if(userTypeInt == 2) {
+                facId = (EditText) findViewById(R.id.facId);
                 faculty = new Faculty(facId.getText().toString(), fname.getText().toString(), branchString, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(faculty, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(faculty, registration, MainActivity.this);
             }
             else if(userTypeInt == 3){
                 facId = (EditText)findViewById(R.id.facId);
                 hod = new HOD(facId.getText().toString(), fname.getText().toString(), branchString, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(hod, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(hod, registration, MainActivity.this);
             }
 
         }
         else{
             if(userTypeInt == 1){
                 student = new Student(userTypeInt, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(student, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(student, registration, MainActivity.this);
             }
             else if(userTypeInt == 2){
                 faculty = new Faculty(userTypeInt, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(faculty, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(faculty, registration, MainActivity.this);
             }
             else if(userTypeInt == 3){
                 hod = new HOD(userTypeInt, email.getText().toString(), password.getText().toString());
-                conHandle = new ConnectionHandler(hod, registration);
-                result.setText(conHandle.msg);
+                conHandle = new ConnectionHandler(hod, registration, MainActivity.this);
             }
         }
     }

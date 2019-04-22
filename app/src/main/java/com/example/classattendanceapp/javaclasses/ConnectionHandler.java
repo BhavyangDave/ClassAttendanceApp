@@ -1,6 +1,13 @@
 package com.example.classattendanceapp.javaclasses;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.classattendanceapp.R;
 
 import org.json.JSONObject;
 
@@ -9,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -16,9 +24,8 @@ import java.net.URL;
 
 public class ConnectionHandler {
     private boolean registration;
+    private Context contextReference;
     User user;
-    StringBuilder sb;
-    public String msg;
     HttpURLConnection con;
     PrintStream ps;
     URL url;
@@ -28,41 +35,50 @@ public class ConnectionHandler {
     HOD hod;
     int userType;
 
-    public ConnectionHandler(Student student, boolean registration){
+    public ConnectionHandler(Student student, boolean registration, Context context){
         this.student = student;
         userType = 1;
         this.registration = registration;
+        this.contextReference = context;
         sendData();
     }
-    public ConnectionHandler(Faculty faculty, boolean registration){
+    public ConnectionHandler(Faculty faculty, boolean registration, Context context){
         this.faculty = faculty;
         userType = 2;
         this.registration = registration;
+        this.contextReference = context;
         sendData();
     }
-    public ConnectionHandler(HOD hod, boolean registration){
+    public ConnectionHandler(HOD hod, boolean registration, Context context){
         this.hod = hod;
         userType = 3;
         this.registration = registration;
+        this.contextReference = context;
         sendData();
     }
 
     private void sendData(){
         if(registration){
-            new RegistrationTask().execute();
+            new RegistrationTask(contextReference).execute();
         }
         else{
-            new LoginTask().execute();
+            new LoginTask(contextReference).execute();
         }
     }
 
 
     class RegistrationTask extends AsyncTask<Void, Void, String>{
+        StringBuilder sb;
+        String msg;
+        private WeakReference<Context> contextReference;
+        public RegistrationTask(Context context){
+            this.contextReference = new WeakReference<Context>(context);
+        }
 
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                url = new URL("http://192.168.1.104:80/classAttendanceApp/registration.php");
+                url = new URL("http://192.168.1.104:80/classAttendance/registration.php");
                 con = (HttpURLConnection)url.openConnection();
                 con.setRequestMethod("POST");
                 con.setDoInput(true);
@@ -80,14 +96,14 @@ public class ConnectionHandler {
                     ps.print("&password="+student.password);
                 }
                 else if(userType == 2){
-                    ps.print("&facid="+faculty.facId);
+                    ps.print("&facId="+faculty.facId);
                     ps.print("&fname="+faculty.fname);
                     ps.print("&branch="+faculty.branch);
                     ps.print("&email="+faculty.email);
                     ps.print("&password="+faculty.password);
                 }
                 else if(userType == 3){
-                    ps.print("&hodid="+hod.hodId);
+                    ps.print("&hodId="+hod.hodId);
                     ps.print("&fname="+hod.fname);
                     ps.print("&branch="+hod.branch);
                     ps.print("&email="+hod.email);
@@ -95,15 +111,14 @@ public class ConnectionHandler {
                 }
                 ps.close();
                 int responseCode = con.getResponseCode();
-
                 BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 sb = new StringBuilder();
-                while((msg = br.readLine())!=null){
-                    sb.append(msg);
+                String line = null;
+                while((line = br.readLine())!=null){
+                    sb.append(line);
                     break;
                 }
                 msg = sb.toString();
-                String line = null;
                 br.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -111,14 +126,30 @@ public class ConnectionHandler {
 
             return msg;
         }
+
+        @Override
+        protected void onPostExecute(String result){
+            AppCompatActivity context = (AppCompatActivity) contextReference.get();
+            if(context!=null){
+                TextView alert = context.findViewById(R.id.resultAlert);
+                alert.setText(result);
+                alert.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     class LoginTask extends AsyncTask<Void, Void, String>{
+        StringBuilder sb;
+        String msg;
+        private WeakReference<Context> contextReference;
+        public LoginTask(Context context){
+            this.contextReference = new WeakReference<Context>(context);
+        }
 
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                url = new URL("http://192.168.1.104:80/classAttendanceApp/login.php");
+                url = new URL("http://192.168.1.104:80/classAttendance/login.php");
                 con = (HttpURLConnection)url.openConnection();
                 con.setRequestMethod("POST");
                 con.setDoInput(true);
@@ -140,22 +171,30 @@ public class ConnectionHandler {
                 }
                 ps.close();
                 int responseCode = con.getResponseCode();
-
                 BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 sb = new StringBuilder();
-                while((msg = br.readLine())!=null){
-                    sb.append(msg);
+                String line = null;
+                while((line = br.readLine())!=null){
+                    sb.append(line);
                     break;
                 }
                 msg = sb.toString();
-                String line = null;
                 br.close();
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            return null;
+            return msg;
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            AppCompatActivity context = (AppCompatActivity) contextReference.get();
+            if(context!=null){
+                TextView alert = context.findViewById(R.id.resultAlert);
+                alert.setText(result);
+                alert.setVisibility(View.VISIBLE);
+            }
         }
 
     }
