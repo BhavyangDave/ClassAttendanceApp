@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "834400363017",
+    "firebase_url": "https://class-attendance-app.firebaseio.com",
+    "project_id": "class-attendance-app",
+    "storage_bucket": "class-attendance-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834400363017:android:e9bace6001bbb7ce",
+        "android_client_info": {
+          "package_name": "com.lolteam.classattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834400363017-vsejmpf1h5r1kq4h9e19ibogaorshot8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbe1ZoiwTU_4_vFQucLoFbcONFaCzmb34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834400363017-vsejmpf1h5r1kq4h9e19ibogaorshot8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
